@@ -1,0 +1,148 @@
+{
+    "dataType": "Map",
+    "value": [
+        [
+            "Shart-IOS.xcodeproj",
+            {
+                "timestamp": 1725413850914.5808,
+                "list": {
+                    "dataType": "Set",
+                    "value": [
+                        {
+                            "path": "/Users/michaelaronianaronian/git/Shart-IOS/Shart-IOS/Services/ProgramService.swift",
+                            "isFolder": false
+                        },
+                        {
+                            "path": "/Users/michaelaronianaronian/git/Shart-IOS/Shart-IOS/Shared/NetworkError.swift",
+                            "isFolder": false
+                        },
+                        {
+                            "path": "/Users/michaelaronianaronian/git/Shart-IOS/Shart-IOS/Models/Program.swift",
+                            "isFolder": false
+                        },
+                        {
+                            "path": "/Users/michaelaronianaronian/git/Shart-IOS/Shart-IOS/Models/Workout.swift",
+                            "isFolder": false
+                        },
+                        {
+                            "path": "/Users/michaelaronianaronian/git/Shart-IOS/Shart-IOS/Models/Exercise.swift",
+                            "isFolder": false
+                        },
+                        {
+                            "path": "/Users/michaelaronianaronian/git/Shart-IOS/Shart-IOS/Models/Set.swift",
+                            "isFolder": false
+                        },
+                        {
+                            "path": "/Users/michaelaronianaronian/git/Shart-IOS/Shart-IOS/Views/Sets/SetsCardView.swift",
+                            "isFolder": false
+                        },
+                        {
+                            "path": "/Users/michaelaronianaronian/git/Shart-IOS/Shart-IOS/Views/Exercises/ExerciseView.swift",
+                            "isFolder": false
+                        },
+                        {
+                            "path": "/Users/michaelaronianaronian/git/Shart-IOS/Shart-IOS/Views/Analytics/AnalyticsView.swift",
+                            "isFolder": false
+                        },
+                        {
+                            "path": "/Users/michaelaronianaronian/git/Shart-IOS/Shart-IOS/Views/Workouts/WorkoutsView.swift",
+                            "isFolder": false
+                        },
+                        {
+                            "path": "/Users/michaelaronianaronian/git/Shart-IOS/Shart-IOS/Views/Programs/ProgramsView.swift",
+                            "isFolder": false
+                        },
+                        {
+                            "path": "/Users/michaelaronianaronian/git/Shart-IOS/Shart-IOS/Views/Programs/ProgramDetailsView.swift",
+                            "isFolder": false
+                        },
+                        {
+                            "path": "/Users/michaelaronianaronian/git/Shart-IOS/Shart-IOS/Views/WelcomeView.swift",
+                            "isFolder": false
+                        },
+                        {
+                            "path": "/Users/michaelaronianaronian/git/Shart-IOS/Shart-IOS/Views/SharkView.swift",
+                            "isFolder": false
+                        },
+                        {
+                            "path": "/Users/michaelaronianaronian/git/Shart-IOS/Shart-IOS/Frontegg.plist",
+                            "isFolder": false
+                        },
+                        {
+                            "path": "/Users/michaelaronianaronian/git/Shart-IOS/Shart-IOS/Shart_IOSApp.swift",
+                            "isFolder": false
+                        },
+                        {
+                            "path": "/Users/michaelaronianaronian/git/Shart-IOS/Shart-IOS/ContentView.swift",
+                            "isFolder": false
+                        },
+                        {
+                            "path": "/Users/michaelaronianaronian/git/Shart-IOS/Shart-IOS/Assets.xcassets",
+                            "isFolder": false
+                        },
+                        {
+                            "path": "/Users/michaelaronianaronian/git/Shart-IOS/Shart-IOS/Preview Content/Preview Assets.xcassets",
+                            "isFolder": false
+                        },
+                        {
+                            "path": "/Users/michaelaronianaronian/git/Shart-IOS/Shart-IOS/AppView.swift",
+                            "isFolder": false
+                        },
+                        {
+                            "path": "/Users/michaelaronianaronian/git/Shart-IOS",
+                            "isFolder": true
+                        },
+                        {
+                            "path": "/Users/michaelaronianaronian/git/Shart-IOS/Shart-IOS",
+                            "isFolder": true
+                        },
+                        {
+                            "path": "/Users/michaelaronianaronian/git/Shart-IOS/Shart-IOS/Services",
+                            "isFolder": true
+                        },
+                        {
+                            "path": "/Users/michaelaronianaronian/git/Shart-IOS/Shart-IOS/Shared",
+                            "isFolder": true
+                        },
+                        {
+                            "path": "/Users/michaelaronianaronian/git/Shart-IOS/Shart-IOS/Models",
+                            "isFolder": true
+                        },
+                        {
+                            "path": "/Users/michaelaronianaronian/git/Shart-IOS/Shart-IOS/Views",
+                            "isFolder": true
+                        },
+                        {
+                            "path": "/Users/michaelaronianaronian/git/Shart-IOS/Shart-IOS/Views/Sets",
+                            "isFolder": true
+                        },
+                        {
+                            "path": "/Users/michaelaronianaronian/git/Shart-IOS/Shart-IOS/Views/Exercises",
+                            "isFolder": true
+                        },
+                        {
+                            "path": "/Users/michaelaronianaronian/git/Shart-IOS/Shart-IOS/Views/Analytics",
+                            "isFolder": true
+                        },
+                        {
+                            "path": "/Users/michaelaronianaronian/git/Shart-IOS/Shart-IOS/Views/Workouts",
+                            "isFolder": true
+                        },
+                        {
+                            "path": "/Users/michaelaronianaronian/git/Shart-IOS/Shart-IOS/Views/Programs",
+                            "isFolder": true
+                        },
+                        {
+                            "path": "/Users/michaelaronianaronian/git/Shart-IOS/Shart-IOS/Preview Content",
+                            "isFolder": true
+                        },
+                        {
+                            "path": "/Users/michaelaronianaronian/git/Shart-IOS",
+                            "isFolder": true
+                        }
+                    ]
+                }
+            }
+        ]
+    ]
+}

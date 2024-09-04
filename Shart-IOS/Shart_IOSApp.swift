@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
-
+import FronteggSwift
 @main
 struct Shart_IOSApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            FronteggWrapper {
+                ContentView()
+            }
         }
     }
 }

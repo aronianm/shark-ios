@@ -6,19 +6,20 @@
 //
 
 import SwiftUI
-
+import FronteggSwift
 struct ContentView: View {
+    @EnvironmentObject var fronteggAuth: FronteggAuth
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        if fronteggAuth.isAuthenticated {
+            SharkView()
+        } else {
+            WelcomeView()
         }
-        .padding()
     }
 }
 
 #Preview {
-    ContentView()
+    FronteggWrapper {
+        ContentView()
+    }
 }

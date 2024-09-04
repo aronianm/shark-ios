@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "frontegg-ios-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/frontegg/frontegg-ios-swift.git",
+      "state" : {
+        "revision" : "bfd6c78f23b6eff119f6b6690eafa10be346068f",
+        "version" : "1.2.18"
+      }
+    }
+  ],
+  "version" : 2
+}

@@ -1,0 +1,12 @@
+{
+    "folders": [
+        {
+            "name": "Shart-IOS/Shart-IOS.xcodeproj",
+            "path": "../.."
+        }
+    ],
+    "settings": {
+        "files.exclude": {},
+        "search.exclude": {}
+    }
+}
