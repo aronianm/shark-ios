@@ -33,7 +33,7 @@
 
 /* Begin PBXFileReference section */
 		6109156A2C87EAD4002D3652 /* ExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseView.swift; sourceTree = "<group>"; };
-		6145232D2C86AFB8000BD443 /* Shart-IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shart-IOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6145232D2C86AFB8000BD443 /* Shark-IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shark-IOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		614523302C86AFB8000BD443 /* Shart_IOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shart_IOSApp.swift; sourceTree = "<group>"; };
 		614523322C86AFB8000BD443 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		614523342C86AFBA000BD443 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -87,7 +87,7 @@
 		6145232E2C86AFB8000BD443 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6145232D2C86AFB8000BD443 /* Shart-IOS.app */,
+				6145232D2C86AFB8000BD443 /* Shark-IOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -194,9 +194,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6145232C2C86AFB8000BD443 /* Shart-IOS */ = {
+		6145232C2C86AFB8000BD443 /* Shark-IOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6145233B2C86AFBA000BD443 /* Build configuration list for PBXNativeTarget "Shart-IOS" */;
+			buildConfigurationList = 6145233B2C86AFBA000BD443 /* Build configuration list for PBXNativeTarget "Shark-IOS" */;
 			buildPhases = (
 				614523292C86AFB8000BD443 /* Sources */,
 				6145232A2C86AFB8000BD443 /* Frameworks */,
@@ -206,13 +206,13 @@
 			);
 			dependencies = (
 			);
-			name = "Shart-IOS";
+			name = "Shark-IOS";
 			packageProductDependencies = (
 				614523412C86B0D1000BD443 /* FronteggSwift */,
 				614523452C86B4CA000BD443 /* FronteggSwift */,
 			);
 			productName = "Shart-IOS";
-			productReference = 6145232D2C86AFB8000BD443 /* Shart-IOS.app */;
+			productReference = 6145232D2C86AFB8000BD443 /* Shark-IOS.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -230,7 +230,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 614523282C86AFB8000BD443 /* Build configuration list for PBXProject "Shart-IOS" */;
+			buildConfigurationList = 614523282C86AFB8000BD443 /* Build configuration list for PBXProject "Shark-IOS" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -246,7 +246,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6145232C2C86AFB8000BD443 /* Shart-IOS */,
+				6145232C2C86AFB8000BD443 /* Shark-IOS */,
 			);
 		};
 /* End PBXProject section */
@@ -476,7 +476,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		614523282C86AFB8000BD443 /* Build configuration list for PBXProject "Shart-IOS" */ = {
+		614523282C86AFB8000BD443 /* Build configuration list for PBXProject "Shark-IOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				614523392C86AFBA000BD443 /* Debug */,
@@ -485,7 +485,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6145233B2C86AFBA000BD443 /* Build configuration list for PBXNativeTarget "Shart-IOS" */ = {
+		6145233B2C86AFBA000BD443 /* Build configuration list for PBXNativeTarget "Shark-IOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6145233C2C86AFBA000BD443 /* Debug */,
