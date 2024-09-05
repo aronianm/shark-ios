@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct ProgramDetailsView: View {
-    var program: Program
+    let program: Program
+
     @State private var showWorkoutIndex = 0
+    
     var body: some View {
         HStack{
             Picker("Select Workout", selection: $showWorkoutIndex) {
@@ -42,6 +44,15 @@ struct ProgramDetailsView: View {
                 }
             }
         }
+        .environmentObject(ProgramEnvironment(program: program))
+    }
+}
+
+class ProgramEnvironment: ObservableObject {
+    @Published var program: Program
+    
+    init(program: Program) {
+        self.program = program
     }
 }
 

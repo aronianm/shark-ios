@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ExerciseView: View {
     var exercise: Exercise
+    var exerciseIndex:Int
+    @EnvironmentObject var programEnvironment: ProgramEnvironment
     @State var showPopup = false
     var body: some View {
         VStack(alignment: .leading) {
@@ -27,7 +29,7 @@ struct ExerciseView: View {
             
             if let sets = exercise.sets, !sets.isEmpty {
                 ForEach(Array(sets.enumerated()), id: \.offset) { index, set in
-                    SetsCardView(index: index, set: set)
+                    SetsCardView(exerciseIndex: exerciseIndex, index: index, set: set)
                 }
             } else {
                 Text("No sets for this exercise")
@@ -65,6 +67,8 @@ struct ExerciseView_Previews: PreviewProvider {
                 Set(reps: 10, weight: .string("BW"), completed: false)
             ],
             superSetKey: nil
-        ))
+        ),
+                     exerciseIndex: 0
+                     )
     }
 }

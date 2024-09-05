@@ -9,7 +9,7 @@ import SwiftUI
 
 struct WorkoutView: View {
     var workout: Workout
-    
+    @EnvironmentObject var programEnvironment: ProgramEnvironment
     var body: some View {
         VStack{
             VStack(alignment: .leading, spacing: 10) {
@@ -22,8 +22,8 @@ struct WorkoutView: View {
                 }
                 .frame(maxWidth: .infinity, alignment: .center)
                 if let exercises = workout.exercises, !exercises.isEmpty {
-                    ForEach(exercises, id: \.name) { exercise in
-                        ExerciseView(exercise: exercise)
+                    ForEach(Array(exercises.enumerated()), id: \.element.name) { index, exercise in
+                        ExerciseView(exercise: exercise, exerciseIndex: index)
                     }.listStyle(InsetGroupedListStyle()).environment(\.defaultMinListRowHeight, 0)
                 } else {
                     Text("No exercises for this workout")
@@ -36,10 +36,17 @@ struct WorkoutView: View {
                     .cornerRadius(8)
                     .shadow(radius: 5)
             )
-        }.padding()
+        }.padding().environmentObject(WorkoutEnvironment(workout: workout))
     }
 }
 
+class WorkoutEnvironment: ObservableObject {
+    @Published var workout: Workout
+    
+    init(workout: Workout) {
+        self.workout = workout
+    }
+}
 #Preview {
     WorkoutView(
         workout: Workout(

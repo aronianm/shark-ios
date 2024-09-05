@@ -1,12 +1,18 @@
 {
     "folders": [
         {
-            "name": "Shart-IOS/Shart-IOS.xcodeproj",
+            "name": "Shark-IOS/Shart-IOS.xcodeproj",
             "path": "../.."
         }
     ],
     "settings": {
-        "files.exclude": {},
-        "search.exclude": {}
+        "files.exclude": {
+            "Shark-IOS.xcodeproj": true,
+            "SharK-IOS": true
+        },
+        "search.exclude": {
+            "Shark-IOS.xcodeproj": true,
+            "SharK-IOS": true
+        }
     }
 }
