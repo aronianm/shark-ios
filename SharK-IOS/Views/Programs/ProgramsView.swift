@@ -38,51 +38,65 @@ struct ProgramsView: View {
                         ProgramDetailsView(program: program!)
                     }
                 }
-                VStack{
-                    List {
-                        ForEach(programs, id: \.id) { program in
-                            NavigationLink(destination: ProgramDetailsView(program: program)) {
-                                HStack {
-                                    VStack(alignment: .leading, spacing: 8) {
-                                        Text(program.name)
-                                            .font(.headline)
-                                        Text("\(program.workouts.count) workout\(program.workouts.count == 1 ? "" : "s")")
-                                            .font(.subheadline)
-                                            .foregroundColor(.secondary)
+                VStack {
+                    if programs.isEmpty {
+                        Text("No programs available. Find a trainer to get started!")
+                            .font(.headline)
+                            .foregroundColor(.secondary)
+                            .padding()
+                    } else {
+                        List {
+                            ForEach(programs, id: \.id) { program in
+                                NavigationLink(destination: ProgramDetailsView(program: program)) {
+                                    HStack {
+                                        VStack(alignment: .leading, spacing: 8) {
+                                            Text(program.name)
+                                                .font(.headline)
+                                            Text("\(program.workouts.count) workout\(program.workouts.count == 1 ? "" : "s")")
+                                                .font(.subheadline)
+                                                .foregroundColor(.secondary)
+                                        }
+                                        Spacer()
+                                        if !program.started {
+                                            Text("Not Started")
+                                                .foregroundColor(.red)
+                                                .padding(.horizontal, 10)
+                                                .padding(.vertical, 5)
+                                                .background(Color.red.opacity(0.1))
+                                                .cornerRadius(8)
+                                        }
                                     }
-                                    Spacer()
+                                    .padding()
+                                    .background(Color(.systemBackground))
+                                    .cornerRadius(10)
+                                    .shadow(radius: 3)
                                 }
-                                .padding()
-                                .background(Color(.systemBackground))
-                                .cornerRadius(10)
-                                .shadow(radius: 3)
+                                .buttonStyle(PlainButtonStyle())
+                                .padding(.horizontal)
+                                .padding(.vertical, 4)
                             }
-                            .buttonStyle(PlainButtonStyle())
-                            .padding(.horizontal)
-                            .padding(.vertical, 4)
+                        }
+                        .listStyle(PlainListStyle())
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .refreshable {
+                            refreshPrograms()
                         }
                     }
-                    .listStyle(PlainListStyle())
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .refreshable {
-                        refreshPrograms()
+                }.onAppear {
+                    programService.fetchPrograms { result in
+                        switch result {
+                        case .success(let programs):
+                            self.programs = programs
+                        case .failure(_):
+                            self.errorLoadingPrograms = true
+                        }
+                        self.loadingPrograms = false
                     }
                 }
             }
-        }.onAppear {
-            programService.fetchPrograms { result in
-                switch result {
-                case .success(let programs):
-                    self.programs = programs
-                case .failure(_):
-                    self.errorLoadingPrograms = true
-                }
-                self.loadingPrograms = false
-            }
+            
         }
-        
     }
-    
     // Add this function outside of the body
     func refreshPrograms() {
         loadingPrograms = true

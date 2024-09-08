@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import FronteggSwift
 
 struct ProgramDetailsView: View {
     let program: Program
-
+    @EnvironmentObject var fronteggAuth: FronteggAuth
     @State private var showWorkoutIndex = 0
+    
     
     var body: some View {
         HStack{
@@ -45,6 +47,48 @@ struct ProgramDetailsView: View {
             }
         }
         .environmentObject(ProgramEnvironment(program: program))
+        .onAppear {
+            if !program.started {
+                updateProgramStarted()
+            }
+        }
+    }
+    
+    private func updateProgramStarted() {
+        guard let url = URL(string: "http://Michaels-MacBook-Air.local:3001/athletes/programs/\(program.userProgramId)/update_program.json") else {
+            print("Invalid URL")
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        if let accessToken = FronteggApp.shared.auth.accessToken {
+            request.setValue("\(accessToken)", forHTTPHeaderField: "Authorization")
+        }
+        
+        let parameters: [String: Any] = ["program_user": ["started": true]]
+        
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: parameters)
+        } catch {
+            print("Error encoding parameters: \(error)")
+            return
+        }
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print("Error updating program started status: \(error)")
+                return
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse {
+                print("Status code: \(httpResponse.statusCode)")
+            }
+            
+            // Handle the response as needed
+        }.resume()
     }
 }
 
@@ -67,6 +111,8 @@ struct ProgramDetailsView_Previews: PreviewProvider {
             createdBy: "User",
             updatedBy: "User",
             active: true,
+            started: false,
+            userProgramId: 1,
             workouts: [
                 Workout(
                     id: 1,

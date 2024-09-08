@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		610935F22C8D5D940007967E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610935F12C8D5D940007967E /* SettingsView.swift */; };
+		610935F62C8D5FE20007967E /* Trainor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610935F52C8D5FE20007967E /* Trainor.swift */; };
 		614523422C86B0D1000BD443 /* FronteggSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 614523412C86B0D1000BD443 /* FronteggSwift */; };
 		614523462C86B4CA000BD443 /* FronteggSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 614523452C86B4CA000BD443 /* FronteggSwift */; };
 		618293E32C880C9B001DFFE5 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618293C52C880C9B001DFFE5 /* AppView.swift */; };
@@ -32,6 +34,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		610935F12C8D5D940007967E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		610935F52C8D5FE20007967E /* Trainor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trainor.swift; sourceTree = "<group>"; };
 		6145232D2C86AFB8000BD443 /* Shark-IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shark-IOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		618293C52C880C9B001DFFE5 /* AppView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		618293C62C880C9B001DFFE5 /* Frontegg.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Frontegg.plist; sourceTree = "<group>"; };
@@ -68,6 +72,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		610935F02C8D5D880007967E /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				610935F12C8D5D940007967E /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		614523242C86AFB8000BD443 = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +124,7 @@
 		618293CB2C880C9B001DFFE5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				610935F52C8D5FE20007967E /* Trainor.swift */,
 				618293CC2C880C9B001DFFE5 /* Workout.swift */,
 				618293CD2C880C9B001DFFE5 /* Exercise.swift */,
 				618293CE2C880C9B001DFFE5 /* Program.swift */,
@@ -131,13 +144,13 @@
 		618293D22C880C9B001DFFE5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				618293D32C880C9B001DFFE5 /* Workouts */,
-				618293D52C880C9B001DFFE5 /* WelcomeView.swift */,
-				618293D62C880C9B001DFFE5 /* Programs */,
+				610935F02C8D5D880007967E /* Settings */,
+				618293DE2C880C9B001DFFE5 /* Analytics */,
 				618293D92C880C9B001DFFE5 /* Exercises */,
+				618293D32C880C9B001DFFE5 /* Workouts */,
+				618293D62C880C9B001DFFE5 /* Programs */,
 				618293DB2C880C9B001DFFE5 /* Sets */,
 				618293DD2C880C9B001DFFE5 /* SharkView.swift */,
-				618293DE2C880C9B001DFFE5 /* Analytics */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -170,6 +183,7 @@
 		618293DB2C880C9B001DFFE5 /* Sets */ = {
 			isa = PBXGroup;
 			children = (
+				618293D52C880C9B001DFFE5 /* WelcomeView.swift */,
 				618293DC2C880C9B001DFFE5 /* SetsCardView.swift */,
 			);
 			path = Sets;
@@ -272,10 +286,12 @@
 				618293E82C880C9B001DFFE5 /* Workout.swift in Sources */,
 				618293E32C880C9B001DFFE5 /* AppView.swift in Sources */,
 				618293EE2C880C9B001DFFE5 /* WelcomeView.swift in Sources */,
+				610935F22C8D5D940007967E /* SettingsView.swift in Sources */,
 				618293F22C880C9B001DFFE5 /* SetsCardView.swift in Sources */,
 				618293EB2C880C9B001DFFE5 /* Set.swift in Sources */,
 				618293F12C880C9B001DFFE5 /* ExerciseView.swift in Sources */,
 				618293E72C880C9B001DFFE5 /* NetworkError.swift in Sources */,
+				610935F62C8D5FE20007967E /* Trainor.swift in Sources */,
 				618293F42C880C9B001DFFE5 /* AnalyticsView.swift in Sources */,
 				618293F62C880C9B001DFFE5 /* ProgramService.swift in Sources */,
 				618293EA2C880C9B001DFFE5 /* Program.swift in Sources */,

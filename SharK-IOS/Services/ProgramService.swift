@@ -18,7 +18,7 @@ class ProgramService:  ObservableObject {
 
     func fetchProgram(programId: Int, completion: @escaping (Result<Program, Error>) -> Void) {
 
-        let baseURL = "http://Michaels-MacBook-Air.local:3001/programs/\(programId).json"
+        let baseURL = "http://Michaels-MacBook-Air.local:3001/athletes/programs/\(programId).json"
         
         guard let url = URL(string: baseURL) else {
             completion(.failure(NetworkError.invalidURL))
@@ -74,7 +74,7 @@ class ProgramService:  ObservableObject {
     }
     
     func fetchPrograms(completion: @escaping (Result<[Program], Error>) -> Void) {
-        let baseURL = "http://Michaels-MacBook-Air.local:3001/programs.json"
+        let baseURL = "http://Michaels-MacBook-Air.local:3001/athletes/programs.json"
         
         guard let url = URL(string: baseURL) else {
             completion(.failure(NetworkError.invalidURL))

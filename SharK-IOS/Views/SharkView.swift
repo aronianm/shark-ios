@@ -13,7 +13,17 @@ struct SharkView: View {
     let fronteggAuth = FronteggApp.shared.auth
     var body: some View {
         NavigationView {
-            ProgramsView()
+            TabView {
+                ProgramsView()
+                    .tabItem {
+                        Image(systemName: "list.bullet")
+                        Text("Programs")
+                    }
+                SettingsView()
+                    .tabItem {
+                        Image(systemName: "gear")
+                    }
+            }
         }
     }
 }

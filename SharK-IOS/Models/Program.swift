@@ -16,5 +16,7 @@ struct Program: Codable {
     let createdBy: String
     let updatedBy: String
     let active: Bool
+    let started: Bool
+    let userProgramId: Int
     let workouts: [Workout] // Optional because we may not have workouts for a program
 }

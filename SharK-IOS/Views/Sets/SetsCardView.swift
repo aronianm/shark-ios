@@ -21,7 +21,6 @@ struct SetsCardView: View {
     
     var body: some View {
         HStack {
-            Text("Program ID: \(workoutId)")
             Text("Set \(index + 1)")
                 .font(.headline)
                 .fontWeight(.bold)
@@ -58,7 +57,7 @@ struct SetsCardView: View {
     }
 
     func updateSet(completion: @escaping (Result<Workout, Error>) -> Void) {
-        let baseURL = "http://Michaels-MacBook-Air.local:3001/programs/\(programId)/workouts/\(workoutId)/update_set.json"
+        let baseURL = "http://Michaels-MacBook-Air.local:3001/athletes/programs/\(programId)/workouts/\(workoutId)/update_set.json"
         guard let url = URL(string: baseURL) else {
             completion(.failure(NetworkError.invalidURL))
             return
