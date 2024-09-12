@@ -15,23 +15,8 @@ struct ProgramDetailsView: View {
     
     
     var body: some View {
-        HStack{
-            Picker("Select Workout", selection: $showWorkoutIndex) {
-                ForEach(0..<program.workouts.count, id: \.self) { index in
-                    Text("Workout \(index + 1)")
-                        .tag(index)
-                }
-            }
-            .pickerStyle(SegmentedPickerStyle())
-            .padding(.horizontal)
-        }
         ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
-                
-                Text("Todays Workout")
-                    .font(.title)
-                    .padding(.horizontal)
-                
+            VStack(alignment: .leading, spacing: 20) { 
                 if program.workouts.isEmpty {
                     Text("No workouts available")
                         .foregroundColor(.secondary)
@@ -42,9 +27,9 @@ struct ProgramDetailsView: View {
                             WorkoutView(workout: workout)
                         }
                     }
-                    .padding(.horizontal)
                 }
             }
+            .frame(maxWidth: .infinity)
         }
         .environmentObject(ProgramEnvironment(program: program))
         .onAppear {
@@ -133,7 +118,9 @@ struct ProgramDetailsView_Previews: PreviewProvider {
                     createdAt: "2024-03-03",
                     updatedAt: "2024-03-03",
                     createdBy: "User",
-                    updatedBy: "User"
+                    updatedBy: "User",
+                    started: false,
+                    completed: false
                 )
             ]
         ))

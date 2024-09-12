@@ -20,7 +20,7 @@ enum WeightValue: Codable {
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let stringValue = try? container.decode(String.self) {
-            self = .string(stringValue)
+            self = .string("BW")
         } else if let numberValue = try? container.decode(Double.self) {
             self = .number(numberValue)
         } else {

@@ -18,4 +18,6 @@ struct Workout: Codable {
     let updatedAt: String
     let createdBy: String
     let updatedBy: String
+    let started: Bool
+    let completed: Bool
 }

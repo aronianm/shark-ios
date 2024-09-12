@@ -36,16 +36,18 @@ struct ExerciseView: View {
                     .foregroundColor(.secondary)
             }
         }.sheet(isPresented: $showPopup) {
-                        VStack {
-                            Text(exercise.name)
-                                .font(.headline)
-                                .padding()
-                            Text("Preview of exercise coming soon")
-                            Button("Close") {
-                                self.showPopup.toggle()
-                            }
-                        }
-                    }
+            VStack {
+                Text(exercise.name)
+                    .font(.headline)
+                    .padding()
+                Text("Preview of exercise coming soon")
+                Button("Close") {
+                    self.showPopup.toggle()
+                }
+            }
+            .presentationDetents([.medium])
+            .presentationDragIndicator(.visible)
+        }
     }
     
     private func weightString(_ weight: WeightValue) -> String {
