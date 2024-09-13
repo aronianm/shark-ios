@@ -37,16 +37,23 @@ struct ContentView: View {
         // Function to request HealthKit authorization
     func requestHealthAuthorization() async throws {
         // Define the health data types you want to read and write.
+        // Define the health data types you want to read and write
+        let typesToRead: Set<HKObjectType> = [
+            HKObjectType.quantityType(forIdentifier: .stepCount)!,
+            HKObjectType.quantityType(forIdentifier: .distanceWalkingRunning)!,
+            HKObjectType.quantityType(forIdentifier: .activeEnergyBurned)!,
+            HKObjectType.quantityType(forIdentifier: .heartRate)!,
+            HKObjectType.workoutType()
+        ]
+        
         guard let stepType = HKObjectType.quantityType(forIdentifier: .stepCount) else {
             throw HealthKitError.dataTypeNotAvailable
         }
         
-        let allTypes = Set([stepType])
-        
         // Check if HealthKit is available on the device.
         if HKHealthStore.isHealthDataAvailable() {
             // Request authorization.
-            try await healthStore.requestAuthorization(toShare: allTypes, read: allTypes)
+            try await healthStore.requestAuthorization(toShare: Set<HKSampleType>(), read: typesToRead)
         } else {
             throw HealthKitError.dataUnavailable
         }

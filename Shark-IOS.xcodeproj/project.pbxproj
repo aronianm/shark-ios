@@ -12,6 +12,7 @@
 		612D5C542C92F68400880B32 /* HealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612D5C532C92F68400880B32 /* HealthStore.swift */; };
 		614523422C86B0D1000BD443 /* FronteggSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 614523412C86B0D1000BD443 /* FronteggSwift */; };
 		614523462C86B4CA000BD443 /* FronteggSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 614523452C86B4CA000BD443 /* FronteggSwift */; };
+		615837BF2C950523000D87BC /* WorkoutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615837BE2C950523000D87BC /* WorkoutService.swift */; };
 		618293E32C880C9B001DFFE5 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618293C52C880C9B001DFFE5 /* AppView.swift */; };
 		618293E42C880C9B001DFFE5 /* Frontegg.plist in Resources */ = {isa = PBXBuildFile; fileRef = 618293C62C880C9B001DFFE5 /* Frontegg.plist */; };
 		618293E52C880C9B001DFFE5 /* Shart_IOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618293C72C880C9B001DFFE5 /* Shart_IOSApp.swift */; };
@@ -41,6 +42,7 @@
 		612D5C532C92F68400880B32 /* HealthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStore.swift; sourceTree = "<group>"; };
 		6145232D2C86AFB8000BD443 /* Shark-IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shark-IOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		615837BD2C94FDA7000D87BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = "Shark-IOS/Info.plist"; sourceTree = "<group>"; };
+		615837BE2C950523000D87BC /* WorkoutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutService.swift; sourceTree = "<group>"; };
 		618293C52C880C9B001DFFE5 /* AppView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		618293C62C880C9B001DFFE5 /* Frontegg.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Frontegg.plist; sourceTree = "<group>"; };
 		618293C72C880C9B001DFFE5 /* Shart_IOSApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shart_IOSApp.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				618293E22C880C9B001DFFE5 /* ProgramService.swift */,
+				615837BE2C950523000D87BC /* WorkoutService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				618293E92C880C9B001DFFE5 /* Exercise.swift in Sources */,
 				618293ED2C880C9B001DFFE5 /* WorkoutsView.swift in Sources */,
 				618293F02C880C9B001DFFE5 /* ProgramsView.swift in Sources */,
+				615837BF2C950523000D87BC /* WorkoutService.swift in Sources */,
 				618293EF2C880C9B001DFFE5 /* ProgramDetailsView.swift in Sources */,
 				618293E52C880C9B001DFFE5 /* Shart_IOSApp.swift in Sources */,
 			);

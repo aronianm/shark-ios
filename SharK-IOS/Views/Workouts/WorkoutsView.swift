@@ -13,12 +13,22 @@ struct WorkoutView: View {
     @State var workout: Workout
     @EnvironmentObject var programEnvironment: ProgramEnvironment
     @EnvironmentObject var fronteggAuth: FronteggAuth
-
+    @StateObject private var workoutService:WorkoutService
+    @State private var workoutSession: HKWorkoutSession?
+    @State private var workoutBuilder: HKWorkoutBuilder?
+    @State private var isWorkoutActive = false
     @State var showLeftIcon = false
     @State var showRightIcon = false
+    
+    
+    init(workout: Workout) {
+        self._workout = State(initialValue: workout)
+        self._workoutService = StateObject(wrappedValue: WorkoutService(fronteggAuth: FronteggApp.shared.auth))
+    }
+    
+    let healthStore = HKHealthStore()
 
     var body: some View {
-
             VStack() {
                 HStack{
                     Text(workout.name)
@@ -26,65 +36,37 @@ struct WorkoutView: View {
                     Spacer()
                     if !workout.started {
                         Button(action: {
-                        guard let url = URL(string: "http://Michaels-MacBook-Air.local:3001/athletes/workouts/\(workout.id).json") else {
-                            print("Invalid URL")
-                            return
-                        }
-                        var request = URLRequest(url: url)
-                        if let accessToken = self.fronteggAuth.accessToken  {
-                            request.setValue("\(accessToken)", forHTTPHeaderField: "Authorization")
-                        }
-                        request.httpMethod = "PUT"
-                        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-                        
-                        let parameters: [String: Any] = ["workout": ["started": true]]
-                        
-                        do {
-                            request.httpBody = try JSONSerialization.data(withJSONObject: parameters)
-                        } catch {
-                            print("Error: Unable to encode parameters")
-                            return
-                        }
-                        
-                        URLSession.shared.dataTask(with: request) { data, response, error in
-                            if let error = error {
-                                print("Error: \(error.localizedDescription)")
-                                return
-                            }
-                            
-                            guard let httpResponse = response as? HTTPURLResponse,
-                                  (200...299).contains(httpResponse.statusCode) else {
-                                print("Error: Invalid response")
-                                return
-                            }
-                            
-                            DispatchQueue.main.async {
-                                if let data = data {
-                                    do {
-                                        let decoder = JSONDecoder()
-                                        decoder.keyDecodingStrategy = .convertFromSnakeCase
-                                        let decodedWorkout = try decoder.decode(Workout.self, from: data)
-                                        self.workout = decodedWorkout
-                                        // Enter fitness mode when the workout starts
+                            workoutService.startWorkout(workout: workout) { result in
+                                switch result {
+                                case .success(let updatedWorkout):
+                                    DispatchQueue.main.async {
+                                        DispatchQueue.main.async {
+                                            self.workout = updatedWorkout
+                                        }
                                         UIApplication.shared.isIdleTimerDisabled = true
-//                                        WKExtension.shared().isAutoLaunchEnabled = true
                                         
-                                        // Optionally, you can also start a workout session if you're using HealthKit
-                                        // This would require importing HealthKit and setting up the necessary permissions
                                         let healthStore = HKHealthStore()
                                         let configuration = HKWorkoutConfiguration()
                                         configuration.activityType = .other
-                                        healthStore.startWatchApp(with: configuration) { success, error in
-                                            if let error = error {
-                                                print("Error starting workout: \(error.localizedDescription)")
+                                        
+                                        Task {
+                                            do {
+                                                try await healthStore.startWatchApp(with: configuration) { success, error in
+                                                    if success {
+                                                        print("Watch app started successfully")
+                                                    } else if let error = error {
+                                                        print("Failed to start watch app: \(error.localizedDescription)")
+                                                    }
+                                                }
+                                            } catch {
+                                                print("Failed to start watch app: \(error.localizedDescription)")
                                             }
                                         }
-                                    } catch {
-                                        print("Error decoding workout: \(error)")
                                     }
+                                case .failure(let error):
+                                    print("Failed to start workout: \(error.localizedDescription)")
                                 }
                             }
-                        }.resume()
                         }) {
                             Text("Start Workout")
                                 .foregroundColor(.green)
@@ -136,6 +118,34 @@ struct WorkoutView: View {
                     .shadow(radius: 5)
             ).environmentObject(WorkoutEnvironment(workout: workout))
         }
+    
+    func startWorkout() async throws {
+        let configuration = HKWorkoutConfiguration()
+        configuration.activityType = .other // You can change this to match the specific workout type
+        
+        workoutBuilder = HKWorkoutBuilder(healthStore: healthStore, configuration: configuration, device: .local())
+        
+        do {
+            try await workoutBuilder?.beginCollection(at: Date())
+            isWorkoutActive = true
+        } catch {
+            print("Failed to start the workout: \(error.localizedDescription)")
+            throw error
+        }
+    }
+    
+    func endWorkout() {
+        Task {
+            do {
+                try await workoutBuilder?.endCollection(at: Date())
+                let workout = try await workoutBuilder?.finishWorkout()
+                isWorkoutActive = false
+                print("Workout ended successfully")
+            } catch {
+                print("Failed to end the workout: \(error.localizedDescription)")
+            }
+        }
+    }
     
 }
 

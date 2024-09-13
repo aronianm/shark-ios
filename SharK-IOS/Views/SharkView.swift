@@ -22,7 +22,17 @@ struct SharkView: View {
                 SettingsView()
                     .tabItem {
                         Image(systemName: "gear")
+                        Text("Settings")
                     }
+                Button(action: {
+                    fronteggAuth.logout()
+                }) {
+                    Text("Logout")
+                }
+                .tabItem {
+                    Image(systemName: "rectangle.portrait.and.arrow.right")
+                    Text("Logout")
+                }
             }
         }
     }
