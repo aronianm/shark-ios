@@ -17,7 +17,7 @@ struct SetsCardView: View {
     @EnvironmentObject var programEnvironment: ProgramEnvironment
     @EnvironmentObject var workoutEnvironment: WorkoutEnvironment
     let index: Int
-    @State var set: Set
+    @State var set: WorkoutSet
     
     var body: some View {
         HStack {
@@ -126,6 +126,6 @@ struct SetsCardView: View {
 #Preview {
     SetsCardView(
         exerciseIndex: 0, index: 0,
-        set: Set(reps: 10, weight: .string("BW"), completed: false)
+        set: WorkoutSet(reps: 10, weight: .string("BW"), completed: false)
     )
 }

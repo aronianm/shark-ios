@@ -109,8 +109,8 @@ struct ProgramDetailsView_Previews: PreviewProvider {
                         Exercise(
                             name: "Push-ups",
                             sets: [
-                                Set(reps: 10, weight: .string("BW"), completed: false),
-                                Set(reps: 10, weight: .string("BW"), completed: false)
+                                WorkoutSet(reps: 10, weight: .string("BW"), completed: false),
+                                WorkoutSet(reps: 10, weight: .string("BW"), completed: false)
                             ],
                             superSetKey: nil
                         )

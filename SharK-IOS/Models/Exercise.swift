@@ -9,6 +9,6 @@ import Foundation
 
 struct Exercise: Codable {
     let name: String
-    let sets: [Set]?
+    let sets: [WorkoutSet]?
     let superSetKey: String?
 }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 import FronteggSwift
-
+import HealthKit
 
 struct WorkoutView: View {
     @State var workout: Workout
@@ -16,8 +16,9 @@ struct WorkoutView: View {
 
     @State var showLeftIcon = false
     @State var showRightIcon = false
+
     var body: some View {
-      
+
             VStack() {
                 HStack{
                     Text(workout.name)
@@ -64,6 +65,20 @@ struct WorkoutView: View {
                                         decoder.keyDecodingStrategy = .convertFromSnakeCase
                                         let decodedWorkout = try decoder.decode(Workout.self, from: data)
                                         self.workout = decodedWorkout
+                                        // Enter fitness mode when the workout starts
+                                        UIApplication.shared.isIdleTimerDisabled = true
+//                                        WKExtension.shared().isAutoLaunchEnabled = true
+                                        
+                                        // Optionally, you can also start a workout session if you're using HealthKit
+                                        // This would require importing HealthKit and setting up the necessary permissions
+                                        let healthStore = HKHealthStore()
+                                        let configuration = HKWorkoutConfiguration()
+                                        configuration.activityType = .other
+                                        healthStore.startWatchApp(with: configuration) { success, error in
+                                            if let error = error {
+                                                print("Error starting workout: \(error.localizedDescription)")
+                                            }
+                                        }
                                     } catch {
                                         print("Error decoding workout: \(error)")
                                     }
@@ -121,7 +136,6 @@ struct WorkoutView: View {
                     .shadow(radius: 5)
             ).environmentObject(WorkoutEnvironment(workout: workout))
         }
-        
     
 }
 
@@ -164,16 +178,16 @@ class WorkoutEnvironment: ObservableObject {
                 Exercise(
                     name: "Push-ups",
                     sets: [
-                        Set(reps: 10, weight: .string("BW"), completed: false),
-                        Set(reps: 10, weight: .string("BW"), completed: false)
+                        WorkoutSet(reps: 10, weight: .string("BW"), completed: false),
+                        WorkoutSet(reps: 10, weight: .string("BW"), completed: false)
                     ],
                     superSetKey: nil
                 ),
                 Exercise(
                     name: "Pull-ups",
                     sets: [
-                        Set(reps: 10, weight: .string("BW"), completed: false),
-                        Set(reps: 10, weight: .string("BW"), completed: false)
+                        WorkoutSet(reps: 10, weight: .string("BW"), completed: false),
+                        WorkoutSet(reps: 10, weight: .string("BW"), completed: false)
                     ],
                     superSetKey: nil
                 )

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		610935F22C8D5D940007967E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610935F12C8D5D940007967E /* SettingsView.swift */; };
 		610935F62C8D5FE20007967E /* Trainor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610935F52C8D5FE20007967E /* Trainor.swift */; };
+		612D5C542C92F68400880B32 /* HealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612D5C532C92F68400880B32 /* HealthStore.swift */; };
 		614523422C86B0D1000BD443 /* FronteggSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 614523412C86B0D1000BD443 /* FronteggSwift */; };
 		614523462C86B4CA000BD443 /* FronteggSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 614523452C86B4CA000BD443 /* FronteggSwift */; };
 		618293E32C880C9B001DFFE5 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618293C52C880C9B001DFFE5 /* AppView.swift */; };
@@ -36,7 +37,10 @@
 /* Begin PBXFileReference section */
 		610935F12C8D5D940007967E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		610935F52C8D5FE20007967E /* Trainor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trainor.swift; sourceTree = "<group>"; };
+		612D5C522C927F1F00880B32 /* Shark-IOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "Shark-IOS.entitlements"; path = "Shark-IOS/Shark-IOS.entitlements"; sourceTree = "<group>"; };
+		612D5C532C92F68400880B32 /* HealthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStore.swift; sourceTree = "<group>"; };
 		6145232D2C86AFB8000BD443 /* Shark-IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shark-IOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		615837BD2C94FDA7000D87BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = "Shark-IOS/Info.plist"; sourceTree = "<group>"; };
 		618293C52C880C9B001DFFE5 /* AppView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		618293C62C880C9B001DFFE5 /* Frontegg.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Frontegg.plist; sourceTree = "<group>"; };
 		618293C72C880C9B001DFFE5 /* Shart_IOSApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shart_IOSApp.swift; sourceTree = "<group>"; };
@@ -83,6 +87,8 @@
 		614523242C86AFB8000BD443 = {
 			isa = PBXGroup;
 			children = (
+				615837BD2C94FDA7000D87BC /* Info.plist */,
+				612D5C522C927F1F00880B32 /* Shark-IOS.entitlements */,
 				618293C42C880C9B001DFFE5 /* SharK-IOS */,
 				6145232E2C86AFB8000BD443 /* Products */,
 			);
@@ -117,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				618293CA2C880C9B001DFFE5 /* NetworkError.swift */,
+				612D5C532C92F68400880B32 /* HealthStore.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -294,6 +301,7 @@
 				610935F62C8D5FE20007967E /* Trainor.swift in Sources */,
 				618293F42C880C9B001DFFE5 /* AnalyticsView.swift in Sources */,
 				618293F62C880C9B001DFFE5 /* ProgramService.swift in Sources */,
+				612D5C542C92F68400880B32 /* HealthStore.swift in Sources */,
 				618293EA2C880C9B001DFFE5 /* Program.swift in Sources */,
 				618293F32C880C9B001DFFE5 /* SharkView.swift in Sources */,
 				618293F52C880C9B001DFFE5 /* ContentView.swift in Sources */,
@@ -432,14 +440,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Shark-IOS/Shark-IOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SharK-IOS/Preview Content\"";
 				DEVELOPMENT_TEAM = B5BDAQU6WD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Shark-IOS/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Shark;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Using the alert Trainor of what is happening during workouts";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "I want to let the trainor know what is happening on wokrouts";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "We will not be updating data";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -463,14 +476,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Shark-IOS/Shark-IOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SharK-IOS/Preview Content\"";
 				DEVELOPMENT_TEAM = B5BDAQU6WD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Shark-IOS/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Shark;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Using the alert Trainor of what is happening during workouts";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "I want to let the trainor know what is happening on wokrouts";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "We will not be updating data";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

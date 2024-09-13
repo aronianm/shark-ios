@@ -6,7 +6,7 @@
 //
 
 import Foundation
-struct Set: Codable {
+struct WorkoutSet: Codable {
     let reps: Int
     let weight: WeightValue
     var completed: Bool
