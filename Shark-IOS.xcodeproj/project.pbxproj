@@ -13,6 +13,13 @@
 		614523422C86B0D1000BD443 /* FronteggSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 614523412C86B0D1000BD443 /* FronteggSwift */; };
 		614523462C86B4CA000BD443 /* FronteggSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 614523452C86B4CA000BD443 /* FronteggSwift */; };
 		615837BF2C950523000D87BC /* WorkoutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615837BE2C950523000D87BC /* WorkoutService.swift */; };
+		615837C72C9509A6000D87BC /* SharkWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615837C62C9509A6000D87BC /* SharkWatchApp.swift */; };
+		615837C92C9509A6000D87BC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615837C82C9509A6000D87BC /* ContentView.swift */; };
+		615837CB2C9509A8000D87BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 615837CA2C9509A8000D87BC /* Assets.xcassets */; };
+		615837CE2C9509A8000D87BC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 615837CD2C9509A8000D87BC /* Preview Assets.xcassets */; };
+		615837D12C9509A8000D87BC /* SharkWatch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 615837C42C9509A6000D87BC /* SharkWatch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		617219232C9511A600D39097 /* WCSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617219222C9511A600D39097 /* WCSessionDelegate.swift */; };
+		617219262C951B7300D39097 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617219252C951B7300D39097 /* MainView.swift */; };
 		618293E32C880C9B001DFFE5 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618293C52C880C9B001DFFE5 /* AppView.swift */; };
 		618293E42C880C9B001DFFE5 /* Frontegg.plist in Resources */ = {isa = PBXBuildFile; fileRef = 618293C62C880C9B001DFFE5 /* Frontegg.plist */; };
 		618293E52C880C9B001DFFE5 /* Shart_IOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618293C72C880C9B001DFFE5 /* Shart_IOSApp.swift */; };
@@ -35,6 +42,30 @@
 		618293F62C880C9B001DFFE5 /* ProgramService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618293E22C880C9B001DFFE5 /* ProgramService.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		615837CF2C9509A8000D87BC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 614523252C86AFB8000BD443 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 615837C32C9509A6000D87BC;
+			remoteInfo = "SharkWatch Watch App";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		615837D52C9509A8000D87BC /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				615837D12C9509A8000D87BC /* SharkWatch Watch App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		610935F12C8D5D940007967E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		610935F52C8D5FE20007967E /* Trainor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trainor.swift; sourceTree = "<group>"; };
@@ -43,6 +74,13 @@
 		6145232D2C86AFB8000BD443 /* Shark-IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shark-IOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		615837BD2C94FDA7000D87BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = "Shark-IOS/Info.plist"; sourceTree = "<group>"; };
 		615837BE2C950523000D87BC /* WorkoutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutService.swift; sourceTree = "<group>"; };
+		615837C42C9509A6000D87BC /* SharkWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SharkWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		615837C62C9509A6000D87BC /* SharkWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharkWatchApp.swift; sourceTree = "<group>"; };
+		615837C82C9509A6000D87BC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		615837CA2C9509A8000D87BC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		615837CD2C9509A8000D87BC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		617219222C9511A600D39097 /* WCSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCSessionDelegate.swift; sourceTree = "<group>"; };
+		617219252C951B7300D39097 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		618293C52C880C9B001DFFE5 /* AppView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		618293C62C880C9B001DFFE5 /* Frontegg.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Frontegg.plist; sourceTree = "<group>"; };
 		618293C72C880C9B001DFFE5 /* Shart_IOSApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shart_IOSApp.swift; sourceTree = "<group>"; };
@@ -75,6 +113,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		615837C12C9509A6000D87BC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -92,6 +137,7 @@
 				615837BD2C94FDA7000D87BC /* Info.plist */,
 				612D5C522C927F1F00880B32 /* Shark-IOS.entitlements */,
 				618293C42C880C9B001DFFE5 /* SharK-IOS */,
+				615837C52C9509A6000D87BC /* SharkWatch Watch App */,
 				6145232E2C86AFB8000BD443 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -100,8 +146,46 @@
 			isa = PBXGroup;
 			children = (
 				6145232D2C86AFB8000BD443 /* Shark-IOS.app */,
+				615837C42C9509A6000D87BC /* SharkWatch Watch App.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		615837C52C9509A6000D87BC /* SharkWatch Watch App */ = {
+			isa = PBXGroup;
+			children = (
+				617219242C951B6900D39097 /* Views */,
+				617219202C95119200D39097 /* Models */,
+				615837C62C9509A6000D87BC /* SharkWatchApp.swift */,
+				615837C82C9509A6000D87BC /* ContentView.swift */,
+				615837CA2C9509A8000D87BC /* Assets.xcassets */,
+				615837CC2C9509A8000D87BC /* Preview Content */,
+			);
+			path = "SharkWatch Watch App";
+			sourceTree = "<group>";
+		};
+		615837CC2C9509A8000D87BC /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				615837CD2C9509A8000D87BC /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		617219202C95119200D39097 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				617219222C9511A600D39097 /* WCSessionDelegate.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		617219242C951B6900D39097 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				617219252C951B7300D39097 /* MainView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		618293C42C880C9B001DFFE5 /* SharK-IOS */ = {
@@ -225,10 +309,12 @@
 				614523292C86AFB8000BD443 /* Sources */,
 				6145232A2C86AFB8000BD443 /* Frameworks */,
 				6145232B2C86AFB8000BD443 /* Resources */,
+				615837D52C9509A8000D87BC /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				615837D02C9509A8000D87BC /* PBXTargetDependency */,
 			);
 			name = "Shark-IOS";
 			packageProductDependencies = (
@@ -239,6 +325,23 @@
 			productReference = 6145232D2C86AFB8000BD443 /* Shark-IOS.app */;
 			productType = "com.apple.product-type.application";
 		};
+		615837C32C9509A6000D87BC /* SharkWatch Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 615837D22C9509A8000D87BC /* Build configuration list for PBXNativeTarget "SharkWatch Watch App" */;
+			buildPhases = (
+				615837C02C9509A6000D87BC /* Sources */,
+				615837C12C9509A6000D87BC /* Frameworks */,
+				615837C22C9509A6000D87BC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SharkWatch Watch App";
+			productName = "SharkWatch Watch App";
+			productReference = 615837C42C9509A6000D87BC /* SharkWatch Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -246,11 +349,14 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1510;
+				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1510;
 				TargetAttributes = {
 					6145232C2C86AFB8000BD443 = {
 						CreatedOnToolsVersion = 15.1;
+					};
+					615837C32C9509A6000D87BC = {
+						CreatedOnToolsVersion = 15.4;
 					};
 				};
 			};
@@ -271,6 +377,7 @@
 			projectRoot = "";
 			targets = (
 				6145232C2C86AFB8000BD443 /* Shark-IOS */,
+				615837C32C9509A6000D87BC /* SharkWatch Watch App */,
 			);
 		};
 /* End PBXProject section */
@@ -283,6 +390,15 @@
 				618293E42C880C9B001DFFE5 /* Frontegg.plist in Resources */,
 				618293EC2C880C9B001DFFE5 /* Preview Assets.xcassets in Resources */,
 				618293E62C880C9B001DFFE5 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		615837C22C9509A6000D87BC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				615837CE2C9509A8000D87BC /* Preview Assets.xcassets in Resources */,
+				615837CB2C9509A8000D87BC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,7 +433,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		615837C02C9509A6000D87BC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				617219232C9511A600D39097 /* WCSessionDelegate.swift in Sources */,
+				617219262C951B7300D39097 /* MainView.swift in Sources */,
+				615837C92C9509A6000D87BC /* ContentView.swift in Sources */,
+				615837C72C9509A6000D87BC /* SharkWatchApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		615837D02C9509A8000D87BC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 615837C32C9509A6000D87BC /* SharkWatch Watch App */;
+			targetProxy = 615837CF2C9509A8000D87BC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		614523392C86AFBA000BD443 /* Debug */ = {
@@ -442,6 +577,7 @@
 		6145233C2C86AFBA000BD443 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Shark-IOS/Shark-IOS.entitlements";
@@ -460,8 +596,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -469,15 +605,20 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "jen.sunset.Shart-IOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		6145233D2C86AFBA000BD443 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Shark-IOS/Shark-IOS.entitlements";
@@ -496,8 +637,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -505,9 +646,73 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "jen.sunset.Shart-IOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		615837D32C9509A8000D87BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"SharkWatch Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = B5BDAQU6WD;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = SharkWatch;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "jen.sunset.Shart-IOS";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "jen.sunset.Shart-IOS.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
+			};
+			name = Debug;
+		};
+		615837D42C9509A8000D87BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"SharkWatch Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = B5BDAQU6WD;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = SharkWatch;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "jen.sunset.Shart-IOS";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "jen.sunset.Shart-IOS.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.0;
 			};
 			name = Release;
 		};
@@ -528,6 +733,15 @@
 			buildConfigurations = (
 				6145233C2C86AFBA000BD443 /* Debug */,
 				6145233D2C86AFBA000BD443 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		615837D22C9509A8000D87BC /* Build configuration list for PBXNativeTarget "SharkWatch Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				615837D32C9509A8000D87BC /* Debug */,
+				615837D42C9509A8000D87BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
