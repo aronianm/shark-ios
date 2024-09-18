@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict/>
+<dict>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>This app use heart rate to track during workouts</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>This app tracks health data for workouts</string>
+	<key>NSHealthClinicalHealthRecordsShareUsageDescription</key>
+	<string>This app tracks health workouts</string>
+	<key>com.apple.developer.healthkit.background-delivery</key>
+	<true/>
+</dict>
 </plist>

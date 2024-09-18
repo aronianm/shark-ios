@@ -20,6 +20,7 @@
 		615837D12C9509A8000D87BC /* SharkWatch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 615837C42C9509A6000D87BC /* SharkWatch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		617219232C9511A600D39097 /* WCSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617219222C9511A600D39097 /* WCSessionDelegate.swift */; };
 		617219262C951B7300D39097 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617219252C951B7300D39097 /* MainView.swift */; };
+		6172192C2C96061100D39097 /* SharkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6172192B2C96061100D39097 /* SharkViewModel.swift */; };
 		618293E32C880C9B001DFFE5 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618293C52C880C9B001DFFE5 /* AppView.swift */; };
 		618293E42C880C9B001DFFE5 /* Frontegg.plist in Resources */ = {isa = PBXBuildFile; fileRef = 618293C62C880C9B001DFFE5 /* Frontegg.plist */; };
 		618293E52C880C9B001DFFE5 /* Shart_IOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618293C72C880C9B001DFFE5 /* Shart_IOSApp.swift */; };
@@ -81,6 +82,8 @@
 		615837CD2C9509A8000D87BC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		617219222C9511A600D39097 /* WCSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCSessionDelegate.swift; sourceTree = "<group>"; };
 		617219252C951B7300D39097 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		617219292C952B2F00D39097 /* SharkWatch Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SharkWatch Watch App.entitlements"; sourceTree = "<group>"; };
+		6172192B2C96061100D39097 /* SharkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharkViewModel.swift; sourceTree = "<group>"; };
 		618293C52C880C9B001DFFE5 /* AppView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		618293C62C880C9B001DFFE5 /* Frontegg.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Frontegg.plist; sourceTree = "<group>"; };
 		618293C72C880C9B001DFFE5 /* Shart_IOSApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shart_IOSApp.swift; sourceTree = "<group>"; };
@@ -154,6 +157,7 @@
 		615837C52C9509A6000D87BC /* SharkWatch Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				617219292C952B2F00D39097 /* SharkWatch Watch App.entitlements */,
 				617219242C951B6900D39097 /* Views */,
 				617219202C95119200D39097 /* Models */,
 				615837C62C9509A6000D87BC /* SharkWatchApp.swift */,
@@ -186,6 +190,14 @@
 				617219252C951B7300D39097 /* MainView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		6172192A2C96052000D39097 /* Watch */ = {
+			isa = PBXGroup;
+			children = (
+				6172192B2C96061100D39097 /* SharkViewModel.swift */,
+			);
+			path = Watch;
 			sourceTree = "<group>";
 		};
 		618293C42C880C9B001DFFE5 /* SharK-IOS */ = {
@@ -237,6 +249,7 @@
 		618293D22C880C9B001DFFE5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6172192A2C96052000D39097 /* Watch */,
 				610935F02C8D5D880007967E /* Settings */,
 				618293DE2C880C9B001DFFE5 /* Analytics */,
 				618293D92C880C9B001DFFE5 /* Exercises */,
@@ -244,6 +257,7 @@
 				618293D62C880C9B001DFFE5 /* Programs */,
 				618293DB2C880C9B001DFFE5 /* Sets */,
 				618293DD2C880C9B001DFFE5 /* SharkView.swift */,
+				618293D52C880C9B001DFFE5 /* WelcomeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -276,7 +290,6 @@
 		618293DB2C880C9B001DFFE5 /* Sets */ = {
 			isa = PBXGroup;
 			children = (
-				618293D52C880C9B001DFFE5 /* WelcomeView.swift */,
 				618293DC2C880C9B001DFFE5 /* SetsCardView.swift */,
 			);
 			path = Sets;
@@ -439,6 +452,7 @@
 			files = (
 				617219232C9511A600D39097 /* WCSessionDelegate.swift in Sources */,
 				617219262C951B7300D39097 /* MainView.swift in Sources */,
+				6172192C2C96061100D39097 /* SharkViewModel.swift in Sources */,
 				615837C92C9509A6000D87BC /* ContentView.swift in Sources */,
 				615837C72C9509A6000D87BC /* SharkWatchApp.swift in Sources */,
 			);
@@ -661,6 +675,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "SharkWatch Watch App/SharkWatch Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SharkWatch Watch App/Preview Content\"";
@@ -668,8 +683,12 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = SharkWatch;
+				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Track workouts";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Track workouts that you share";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "$(EXECUTABLE_NAME)";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "jen.sunset.Shart-IOS";
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -691,6 +710,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "SharkWatch Watch App/SharkWatch Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SharkWatch Watch App/Preview Content\"";
@@ -698,8 +718,12 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = SharkWatch;
+				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Track workouts";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Track workouts that you share";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "$(EXECUTABLE_NAME)";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "jen.sunset.Shart-IOS";
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

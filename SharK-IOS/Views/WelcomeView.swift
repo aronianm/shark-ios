@@ -23,7 +23,12 @@ struct WelcomeView: View {
                 Text("Discover amazing features and join our community.")
                     .font(.subheadline)
                     .foregroundColor(.gray)
-                
+                Spacer()
+                Image("default")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 200)
+                    .cornerRadius(10)
                 Spacer()
                 
                 
@@ -40,7 +45,7 @@ struct WelcomeView: View {
                         .cornerRadius(10)
                 }
             }
-        }.background(Image("default").resizable().edgesIgnoringSafeArea(.all))
+        }.background()
     }
 }
 

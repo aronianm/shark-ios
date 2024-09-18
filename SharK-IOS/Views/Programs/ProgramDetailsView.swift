@@ -120,7 +120,8 @@ struct ProgramDetailsView_Previews: PreviewProvider {
                     createdBy: "User",
                     updatedBy: "User",
                     started: false,
-                    completed: false
+                    completed: false,
+                    startedAt: "2023"
                 )
             ]
         ))

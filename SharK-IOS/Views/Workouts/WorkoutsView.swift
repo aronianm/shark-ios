@@ -20,14 +20,18 @@ struct WorkoutView: View {
     @State var showLeftIcon = false
     @State var showRightIcon = false
     
-    
+    @State private var workoutDuration: TimeInterval = 0
+    @State private var heartRate: Double = 0
+    @State private var workoutTimer: Timer?
+    @State private var heartRateQuery: HKQuery?
+
+    let healthStore = HKHealthStore()
+
     init(workout: Workout) {
         self._workout = State(initialValue: workout)
         self._workoutService = StateObject(wrappedValue: WorkoutService(fronteggAuth: FronteggApp.shared.auth))
     }
     
-    let healthStore = HKHealthStore()
-
     var body: some View {
             VStack() {
                 HStack{
@@ -40,26 +44,33 @@ struct WorkoutView: View {
                                 switch result {
                                 case .success(let updatedWorkout):
                                     DispatchQueue.main.async {
-                                        DispatchQueue.main.async {
-                                            self.workout = updatedWorkout
-                                        }
+                                        self.workout = updatedWorkout
                                         UIApplication.shared.isIdleTimerDisabled = true
                                         
                                         let healthStore = HKHealthStore()
-                                        let configuration = HKWorkoutConfiguration()
-                                        configuration.activityType = .other
                                         
                                         Task {
                                             do {
-                                                try await healthStore.startWatchApp(with: configuration) { success, error in
+                                                let configuration = HKWorkoutConfiguration()
+                                                configuration.activityType = .other
+                                                configuration.locationType = .indoor
+                                                
+                                                let builder = HKWorkoutBuilder(healthStore: healthStore, configuration: configuration, device: .local())
+                                                
+                                                try await builder.beginCollection(withStart: Date()) { success, error in
                                                     if success {
-                                                        print("Watch app started successfully")
+                                                        print("Workout collection began successfully")
+                                                        self.workoutBuilder = builder
+                                                        self.isWorkoutActive = true
+                                                        print("Entered fitness mode on iPhone")
+                                                        startWorkoutTimer()
+                                                        startHeartRateQuery()
                                                     } else if let error = error {
-                                                        print("Failed to start watch app: \(error.localizedDescription)")
+                                                        print("Failed to begin workout collection: \(error.localizedDescription)")
                                                     }
                                                 }
                                             } catch {
-                                                print("Failed to start watch app: \(error.localizedDescription)")
+                                                print("Failed to setup workout: \(error.localizedDescription)")
                                             }
                                         }
                                     }
@@ -108,6 +119,32 @@ struct WorkoutView: View {
                     Text("No exercises for this workout")
                         .foregroundColor(.secondary)
                 }
+
+            if workout.started {
+                VStack(spacing: 20) {
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text("Workout Duration")
+                                .font(.headline)
+                            Text(formatDuration(workoutDuration))
+                                .font(.title)
+                                .fontWeight(.bold)
+                        }
+                        Spacer()
+                        VStack(alignment: .trailing) {
+                            Text("Heart Rate")
+                                .font(.headline)
+                            Text("\(Int(heartRate)) BPM")
+                                .font(.title)
+                                .fontWeight(.bold)
+                        }
+                    }
+                    .padding()
+                    .background(Color.gray.opacity(0.1))
+                    .cornerRadius(10)
+                }
+                .padding(.vertical)
+            }
             }
             .padding()
             .background(
@@ -117,17 +154,107 @@ struct WorkoutView: View {
                     .cornerRadius(8)
                     .shadow(radius: 5)
             ).environmentObject(WorkoutEnvironment(workout: workout))
+            .onAppear {
+                setupHealthKitAuthorization()
+                if(workout.started){
+                    startWorkoutTimer()
+                    startHeartRateQuery()
+                }
+            }
         }
     
+    private func setupHealthKitAuthorization() {
+        let typesToShare: Set = [HKObjectType.workoutType()]
+        let typesToRead: Set = [HKObjectType.quantityType(forIdentifier: .heartRate)!]
+        
+        healthStore.requestAuthorization(toShare: typesToShare, read: typesToRead) { (success, error) in
+            if success {
+                print("HealthKit authorization successful")
+            } else if let error = error {
+                print("HealthKit authorization failed: \(error.localizedDescription)")
+            }
+        }
+    }
+
+    private func startWorkoutTimer() {
+       let dateFormatter = DateFormatter()
+       dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+       if let startDate = dateFormatter.date(from: workout.startedAt!) {
+           workoutDuration = Date().timeIntervalSince(startDate)
+           Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
+               self.workoutDuration = Date().timeIntervalSince(startDate)
+           }
+       } else {
+           print("Error: Unable to parse startedAt date")
+       }
+    }
+
+    private func stopWorkoutTimer() {
+        workoutTimer?.invalidate()
+        workoutTimer = nil
+    }
+
+    private func startHeartRateQuery() {
+        guard let heartRateType = HKObjectType.quantityType(forIdentifier: .heartRate) else { return }
+        
+        let query = HKAnchoredObjectQuery(type: heartRateType, predicate: nil, anchor: nil, limit: HKObjectQueryNoLimit) { (query, samples, deletedObjects, anchor, error) in
+            if let error = error {
+                print("Error in heart rate query: \(error.localizedDescription)")
+                return
+            }
+            
+            guard let samples = samples as? [HKQuantitySample] else { return }
+            
+            for sample in samples {
+                DispatchQueue.main.async {
+                    do {
+                        self.heartRate = try sample.quantity.doubleValue(for: HKUnit.count().unitDivided(by: .minute()))
+                    } catch {
+                        print("Error converting heart rate: \(error.localizedDescription)")
+                    }
+                }
+            }
+        }
+        
+        query.updateHandler = { (query, samples, deletedObjects, anchor, error) in
+            guard let samples = samples as? [HKQuantitySample] else { return }
+            
+            for sample in samples {
+                DispatchQueue.main.async {
+                    self.heartRate = sample.quantity.doubleValue(for: HKUnit.count().unitDivided(by: .minute()))
+                }
+            }
+        }
+        
+        healthStore.execute(query)
+        self.heartRateQuery = query
+    }
+
+    private func stopHeartRateQuery() {
+        if let query = heartRateQuery {
+            healthStore.stop(query)
+        }
+    }
+
+    private func formatDuration(_ duration: TimeInterval) -> String {
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.hour, .minute, .second]
+        formatter.unitsStyle = .positional
+        formatter.zeroFormattingBehavior = .pad
+        return formatter.string(from: duration) ?? "00:00:00"
+    }
+
     func startWorkout() async throws {
         let configuration = HKWorkoutConfiguration()
-        configuration.activityType = .other // You can change this to match the specific workout type
+        configuration.activityType = .other
         
         workoutBuilder = HKWorkoutBuilder(healthStore: healthStore, configuration: configuration, device: .local())
         
         do {
             try await workoutBuilder?.beginCollection(at: Date())
             isWorkoutActive = true
+            startWorkoutTimer()
+            startHeartRateQuery()
         } catch {
             print("Failed to start the workout: \(error.localizedDescription)")
             throw error
@@ -140,6 +267,8 @@ struct WorkoutView: View {
                 try await workoutBuilder?.endCollection(at: Date())
                 let workout = try await workoutBuilder?.finishWorkout()
                 isWorkoutActive = false
+                stopWorkoutTimer()
+                stopHeartRateQuery()
                 print("Workout ended successfully")
             } catch {
                 print("Failed to end the workout: \(error.localizedDescription)")
@@ -207,7 +336,8 @@ class WorkoutEnvironment: ObservableObject {
             createdBy: "User",
             updatedBy: "User",
             started: false,
-            completed: false
+            completed: false,
+            startedAt: nil
         )
     )
 }

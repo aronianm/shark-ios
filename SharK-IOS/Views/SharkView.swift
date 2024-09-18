@@ -11,8 +11,8 @@ import WatchConnectivity
 
 // Define the main view with a NavigationView
 struct SharkView: View {
-    @StateObject private var viewModel = SharkViewModel()
     let fronteggAuth = FronteggApp.shared.auth
+    @StateObject private var watchConnectivity = WatchConnectivityManager()
     
     var body: some View {
         NavigationView {
@@ -27,6 +27,11 @@ struct SharkView: View {
                         Image(systemName: "gear")
                         Text("Settings")
                     }
+                WatchConnectivityView(watchConnectivity: watchConnectivity)
+                    .tabItem {
+                        Image(systemName: "applewatch")
+                        Text("Watch")
+                    }
                 Button(action: {
                     fronteggAuth.logout()
                 }) {
@@ -35,60 +40,80 @@ struct SharkView: View {
                 .tabItem {
                     Image(systemName: "rectangle.portrait.and.arrow.right")
                     Text("Logout")
-                .onTapGesture {
-                    fronteggAuth.logout()
-                    WCSession.default.sendMessage(["FronteggAccessToken": ""], replyHandler: nil) { error in
-                        print("Error sending logout message to Apple Watch: \(error.localizedDescription)")
-                    }
                 }
-                }
-            }.onAppear {
-                viewModel.handleWatchSession(fronteggAuth: fronteggAuth)
             }
         }
-       
+        .onAppear {
+            connectToAppleWatch()
+        }
+    }
+    
+    private func connectToAppleWatch() {
+        watchConnectivity.activateSession()
     }
 }
 
-// ViewModel for handling WatchConnectivity and session management
-class SharkViewModel: NSObject, ObservableObject, WCSessionDelegate {
-    func handleWatchSession(fronteggAuth: FronteggAuth) {
-        if let accessToken = fronteggAuth.accessToken {
-            UserDefaults.standard.set(accessToken, forKey: "FronteggAccessToken")
-            
-            // Pass the access token to the Apple Watch app
-            if WCSession.isSupported() {
-                let session = WCSession.default
-                session.delegate = self
-                session.activate()
-                
-                let message = ["FronteggAccessToken": accessToken]
-                session.sendMessage(message, replyHandler: nil) { error in
-                    print("Error sending message to Apple Watch: \(error.localizedDescription)")
-                }
+struct WatchConnectivityView: View {
+    @ObservedObject var watchConnectivity: WatchConnectivityManager
+    
+    var body: some View {
+        VStack {
+            Text("Watch Connectivity")
+            Text("Connection status: \(watchConnectivity.isReachable ? "Connected" : "Disconnected")")
+            Button("Send Message to Watch") {
+                watchConnectivity.sendMessage(["message": "Hello from iPhone!"])
+            }
+        }
+    }
+}
+
+class WatchConnectivityManager: NSObject, ObservableObject, WCSessionDelegate {
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        // Implementation for sessionDidBecomeInactive
+    }
+    
+    func sessionDidDeactivate(_ session: WCSession) {
+        // Implementation for sessionDidDeactivate
+    }
+    @Published var isReachable = false
+    private var session: WCSession = .default
+    
+    override init() {
+        super.init()
+        if WCSession.isSupported() {
+            session.delegate = self
+        }
+    }
+    
+    func activateSession() {
+        session.activate()
+    }
+    
+    func sendMessage(_ message: [String: Any]) {
+        if session.isReachable {
+            session.sendMessage(message, replyHandler: nil) { error in
+                print("Error sending message: \(error.localizedDescription)")
             }
         }
     }
     
-    // WCSessionDelegate methods
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        if let error = error {
-            print("WCSession activation failed with error: \(error.localizedDescription)")
-        } else {
-            print("WCSession activated with state: \(activationState.rawValue)")
+        DispatchQueue.main.async {
+            self.isReachable = session.isReachable
         }
     }
-
-    func sessionDidBecomeInactive(_ session: WCSession) {
-        // Handle session becoming inactive if needed
+    
+    func sessionReachabilityDidChange(_ session: WCSession) {
+        DispatchQueue.main.async {
+            self.isReachable = session.isReachable
+        }
     }
-
-    func sessionDidDeactivate(_ session: WCSession) {
-        // Handle session deactivation if needed, and activate again
-        session.activate()
+    
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        // Handle received messages from the watch
+        print("Received message from watch: \(message)")
     }
 }
-
 
 #Preview {
     FronteggWrapper {

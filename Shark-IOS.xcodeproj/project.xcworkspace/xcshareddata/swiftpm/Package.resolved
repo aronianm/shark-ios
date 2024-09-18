@@ -1,14 +1,15 @@
 {
+  "originHash" : "45e600cc1be9074839b3d7d2253470f8553966abdf9e1579da8903fb4da06075",
   "pins" : [
     {
       "identity" : "frontegg-ios-swift",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/frontegg/frontegg-ios-swift.git",
       "state" : {
-        "revision" : "bfd6c78f23b6eff119f6b6690eafa10be346068f",
-        "version" : "1.2.18"
+        "revision" : "bb0e28fcd34d6d776f45c77dae16d3b18bdc8bb1",
+        "version" : "1.2.20"
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }

@@ -11,7 +11,6 @@ import FronteggSwift
 struct ProgramsView: View {
     @EnvironmentObject var fronteggAuth: FronteggAuth
     @StateObject private var programService: ProgramService
-    
     init() {
         _programService = StateObject(wrappedValue: ProgramService(fronteggAuth: FronteggApp.shared.auth))
     }

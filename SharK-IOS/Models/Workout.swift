@@ -20,4 +20,5 @@ struct Workout: Codable {
     let updatedBy: String
     let started: Bool
     let completed: Bool
+    let startedAt: String?
 }

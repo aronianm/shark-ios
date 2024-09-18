@@ -39,21 +39,6 @@ class SessionDelegate: NSObject, WCSessionDelegate, ObservableObject {
     // }
     
     // Method to request authentication from the paired iPhone
-    func requestAuthentication() {
-        if WCSession.default.isReachable {
-            WCSession.default.sendMessage(["request": "authentication"], replyHandler: { response in
-                if let token = response["FronteggAccessToken"] as? String {
-                    DispatchQueue.main.async {
-                        self.authenticationKey = token
-                    }
-                }
-            }) { error in
-                print("Error requesting authentication: \(error.localizedDescription)")
-            }
-        }else{
-            print("iPhone is not reachable")
-        }
-    }
     
     // Handle incoming messages
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
